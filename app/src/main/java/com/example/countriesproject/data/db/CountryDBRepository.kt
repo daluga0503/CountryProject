@@ -13,4 +13,8 @@ class CountryDBRepository @Inject constructor(private val countryDao: CountryDao
             suspend fun insert(listCountryEntity: List<CountryEntity>){
                 countryDao.insert(listCountryEntity)
             }
+
+            suspend fun getCountryDetail(name:String):CountryEntity{
+                return countryDao.getCountryDetail(name);
+            }
 }

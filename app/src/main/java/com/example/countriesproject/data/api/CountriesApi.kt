@@ -11,7 +11,7 @@ interface CountryApi {
     @GET("v3.1/all")
     suspend fun fetchAllPais():List<CountriesDetailResponse>
     @GET("v3/name{name}/")
-    suspend fun getDetail(@Path("name") name:String):List<CountriesDetailResponse>
+    suspend fun getDetail(@Path("name") name:String):CountriesDetailResponse
 }
 @Singleton
 class CountryService @Inject constructor() {

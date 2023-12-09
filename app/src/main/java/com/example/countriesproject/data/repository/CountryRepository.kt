@@ -3,6 +3,7 @@ package com.example.countriesproject.data.repository
 import com.example.countriesproject.data.api.CountriesApiRepository
 import com.example.countriesproject.data.api.asEntityModel
 import com.example.countriesproject.data.db.CountryDBRepository
+import com.example.countriesproject.data.db.CountryEntity
 import com.example.countriesproject.data.db.asCountry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -24,6 +25,10 @@ class CountryRepository @Inject constructor(
             }
             return list
         }
+
+    suspend fun getName(name:String):CountryEntity{
+        return dbRepository.getCountryDetail(name)
+    }
 
     suspend fun refreshList(){
         withContext(Dispatchers.IO){

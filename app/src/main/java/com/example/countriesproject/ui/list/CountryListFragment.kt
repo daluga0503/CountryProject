@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
+import com.example.countriesproject.data.repository.Country
 import com.example.countriesproject.databinding.FragmentPaisListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -30,7 +32,10 @@ class CountryListFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = CountryListAdapter(requireContext())
+        val adapter = CountryListAdapter(requireContext()) { view, country->
+            val action = CountryListFragmentDirections.actionCountryListFragmentToCountryDetailFragment(country.name)
+            view.findNavController().navigate(action)
+        }
         val rv = binding.countryList
         rv.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
@@ -40,6 +45,5 @@ class CountryListFragment:Fragment() {
                 }
             }
         }
-
     }
 }

@@ -9,11 +9,12 @@ import coil.request.ImageRequest
 import com.example.countriesproject.data.repository.Country
 import com.example.countriesproject.databinding.CountryListItemBinding
 import android.content.Context
+import android.view.View
 import coil.imageLoader
 
-class CountryListAdapter(private val context: Context): ListAdapter<Country, CountryListAdapter.CountryViewHolder>(DiffCallback){
+class CountryListAdapter(private val context: Context, private val onClick:((View, Country) ->Unit)): ListAdapter<Country, CountryListAdapter.CountryViewHolder>(DiffCallback){
 
-    inner class CountryViewHolder(private val binding:CountryListItemBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class CountryViewHolder(private val binding:CountryListItemBinding, private val onClick: (View, Country) -> Unit): RecyclerView.ViewHolder(binding.root) {
         fun bindCountry(country:Country){
             binding.countryName.text = country.name
             val imgRequest = ImageRequest.Builder(context)
@@ -22,6 +23,9 @@ class CountryListAdapter(private val context: Context): ListAdapter<Country, Cou
                 .target(binding.countryImg)
                 .build()
             context.imageLoader.enqueue(imgRequest)
+            binding.countryCard.setOnClickListener {
+                onClick(it, country)
+            }
         }
     }
 
@@ -39,7 +43,12 @@ class CountryListAdapter(private val context: Context): ListAdapter<Country, Cou
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder = CountryViewHolder(CountryListItemBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
+        val  binding = CountryListItemBinding.inflate(LayoutInflater.from(parent.context),
+            parent,
+            false)
+        return CountryViewHolder(binding, onClick)
+    }
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) = holder.bindCountry(getItem(position))
 }
