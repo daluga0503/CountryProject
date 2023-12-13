@@ -9,5 +9,14 @@
         android:id="@+id/locationListFragment"
         android:name="com.example.countriesproject.ui.location.LocationListFragment"
         android:label="fragment_location_list"
-        tools:layout="@layout/fragment_location_list" />
+        tools:layout="@layout/fragment_location_list" >
+        <action
+            android:id="@+id/action_locationListFragment_to_ciudadFragment"
+            app:destination="@id/ciudadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ciudadFragment"
+        android:name="com.example.countriesproject.ui.ciudad.CiudadFragment"
+        android:label="fragment_ciudad"
+        tools:layout="@layout/fragment_ciudad" />
 </navigation>

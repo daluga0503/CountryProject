@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.countryListFragment,
-                R.id.locationListFragment
+                R.id.locationListFragment,
             )
         )
         navView.setupWithNavController(navController)
