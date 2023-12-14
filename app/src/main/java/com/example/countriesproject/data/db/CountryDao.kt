@@ -20,7 +20,17 @@ interface CountryDao {
 
 
     @Transaction
-    @Query("SELECT * FROM country")
-    fun getCountryWhitVisit(): List<CountryVisited>
+    @Query("SELECT * FROM ciudades")
+    fun getCountryWhitVisit(): List<CityEntity>
+
+
+    //Create datos locales
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertCity(cityEntity: CityEntity)
+
+    @Query ("Select * from ciudades")
+    fun getAllCity(): Flow<List<CityEntity>>
+
 
 }

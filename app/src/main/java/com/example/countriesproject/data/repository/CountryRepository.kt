@@ -2,8 +2,10 @@ package com.example.countriesproject.data.repository
 
 import com.example.countriesproject.data.api.CountriesApiRepository
 import com.example.countriesproject.data.api.asEntityModel
+import com.example.countriesproject.data.db.CityEntity
 import com.example.countriesproject.data.db.CountryDBRepository
 import com.example.countriesproject.data.db.CountryEntity
+import com.example.countriesproject.data.db.asCity
 import com.example.countriesproject.data.db.asCountry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -34,6 +36,29 @@ class CountryRepository @Inject constructor(
         withContext(Dispatchers.IO){
             val apiCountry = apiRepository.getAll()
             dbRepository.insert(apiCountry.asEntityModel())
+        }
+    }
+
+
+
+    //Ciudades
+
+    val city: Flow<List<City>>
+        get() {
+            val list = dbRepository.allCity.map {
+                it.asCity()
+            }
+            return list
+        }
+
+    suspend fun createCity(city: City){
+        withContext(Dispatchers.IO){
+            val city = CityEntity(
+                city.listaVisitadosId,
+                city.namePais,
+                city.nameCiudad
+            )
+            dbRepository.insertCity(city)
         }
     }
 }

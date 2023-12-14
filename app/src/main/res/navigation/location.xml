@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/ciudadFragment"
-        android:name="com.example.countriesproject.ui.ciudad.CiudadFragment"
+        android:name="com.example.countriesproject.ui.ciudad.CityFragment"
         android:label="fragment_ciudad"
         tools:layout="@layout/fragment_ciudad" />
 </navigation>

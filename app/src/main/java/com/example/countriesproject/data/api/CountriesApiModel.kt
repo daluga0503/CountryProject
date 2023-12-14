@@ -1,6 +1,8 @@
 package com.example.countriesproject.data.api
 
+import com.example.countriesproject.data.db.CityEntity
 import com.example.countriesproject.data.db.CountryEntity
+import com.example.countriesproject.data.repository.City
 import com.google.gson.annotations.SerializedName
 
 data class CountriesApiModel(
@@ -65,5 +67,16 @@ fun List<CountriesListApiModel>.asEntityModel(): List<CountryEntity> {
                 population = countryApiModel.population
             )
         }
+    }
+}
+
+
+fun List<CityEntity>.asCityList(): List<City> {
+    return map { cityEntity ->
+        City(
+            listaVisitadosId = cityEntity.listaVisitadosId,
+            namePais = cityEntity.namePais,
+            nameCiudad = cityEntity.nameCiudad
+        )
     }
 }

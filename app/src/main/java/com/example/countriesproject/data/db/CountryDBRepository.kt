@@ -17,4 +17,12 @@ class CountryDBRepository @Inject constructor(private val countryDao: CountryDao
             suspend fun getCountryDetail(name:String):CountryEntity{
                 return countryDao.getCountryDetail(name);
             }
+
+            //Ciudades
+
+            val allCity: Flow<List<CityEntity>> = countryDao.getAllCity()
+
+            suspend fun insertCity(cityEntity: CityEntity){
+                countryDao.insertCity(cityEntity)
+            }
 }

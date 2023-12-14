@@ -4,22 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ciudad.CiudadFragment">
+    tools:context=".ui.ciudad.CityFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/arrow_back" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ciudad_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_width="359dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="76dp"
         android:hint="Ciudad"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/toolbar"
+        app:layout_constraintTop_toTopOf="@id/toolbar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ciudad_input"
-            android:layout_width="match_parent"
+            android:layout_width="359dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             app:layout_constraintStart_toEndOf="parent"
@@ -30,30 +40,29 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pais_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="348dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="32dp"
         android:hint="Pais"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ciudad_label">
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/description_input"
-            android:layout_width="match_parent"
+            android:layout_width="351dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="52dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pais_label">
-        </com.google.android.material.textfield.TextInputEditText>
+            app:layout_constraintTop_toBottomOf="@+id/pais_label"></com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/create_boton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="236dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginTop="72dp"
         android:text="Crear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pais_label"></Button>
@@ -63,8 +72,8 @@
         style="@style/Widget.Material3.Button.OutlinedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="72dp"
         android:text="Cancelar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pais_label"></Button>
