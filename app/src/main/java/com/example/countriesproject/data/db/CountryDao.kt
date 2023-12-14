@@ -26,7 +26,7 @@ interface CountryDao {
 
     //Create datos locales
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCity(cityEntity: CityEntity)
 
     @Query ("Select * from ciudades")
