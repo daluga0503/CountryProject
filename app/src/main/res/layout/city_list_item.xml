@@ -24,7 +24,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Málaga" />
-
         <TextView
             android:id="@+id/county_name"
             style="@style/TextAppearance.Material3.HeadlineLarge"
@@ -36,5 +35,7 @@
             app:layout_constraintStart_toEndOf="@+id/city_name"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="España" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

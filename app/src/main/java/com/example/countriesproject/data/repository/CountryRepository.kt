@@ -32,6 +32,11 @@ class CountryRepository @Inject constructor(
         return dbRepository.getCountryDetail(name)
     }
 
+    suspend fun getAllCountries(): Flow<List<Country>> {
+        return dbRepository.getAllCountries().map { it.asCountry() }
+    }
+
+
     suspend fun refreshList(){
         withContext(Dispatchers.IO){
             val apiCountry = apiRepository.getAll()

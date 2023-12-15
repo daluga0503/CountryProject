@@ -10,8 +10,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/arrow_back" />
@@ -38,6 +40,7 @@
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
+<!---
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/pais_label"
         android:layout_width="348dp"
@@ -55,7 +58,31 @@
             android:layout_marginTop="52dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pais_label"></com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout> -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:id="@+id/pais_label"
+        android:layout_width="348dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="32dp"
+        android:hint="Pais"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ciudad_label">
+
+        <AutoCompleteTextView
+            android:id="@+id/pais_input"
+            android:inputType="none"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pais_label"/>
+
     </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <Button
         android:id="@+id/create_boton"
@@ -77,6 +104,8 @@
         android:text="Cancelar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pais_label"></Button>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
