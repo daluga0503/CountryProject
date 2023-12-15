@@ -1,5 +1,6 @@
 package com.example.countriesproject.ui.location
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.countriesproject.R
+import com.example.countriesproject.data.repository.City
 import com.example.countriesproject.databinding.FragmentLocationListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -34,8 +36,13 @@ class LocationListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        /*
         val adapter = LocationListAdapter(requireContext())
+        binding.visit.adapter = adapter
+        */
+        val adapter = LocationListAdapter(requireContext()) { city, view ->
+            onShareItem(city)
+        }
         binding.visit.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -50,5 +57,24 @@ class LocationListFragment : Fragment() {
             val action = LocationListFragmentDirections.actionLocationListFragmentToCiudadFragment()
             view.findNavController().navigate(action)
         }
+
+    }
+    private fun onShareItem(city: City) {
+        // Obtén la información relevante de la ciudad
+        val cityName = city.nameCiudad
+        val countyName = city.namePais
+
+        // Crea el mensaje de texto para compartir
+        val statusText = "Información de la ciudad:\nNombre: $cityName\nPaís: $countyName"
+
+        // Crea un intent para compartir
+        val intent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, statusText)
+            type = "text/plain"
+        }
+
+        // Inicia la actividad de compartir
+        startActivity(Intent.createChooser(intent, "Compartir con"))
     }
 }

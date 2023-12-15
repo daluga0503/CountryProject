@@ -66,6 +66,8 @@ class CityFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        var selectedCountry = ""
+
         // Observe changes in the list of countries and update the ArrayAdapter
         viewLifecycleOwner.lifecycleScope.launch {
 
@@ -78,17 +80,22 @@ class CityFragment : Fragment() {
                     countryNames
                 )
                 binding.paisInput.setAdapter(adapter)
+
+                binding.paisInput.setOnItemClickListener { _, _, position, _ ->
+                    selectedCountry = adapter.getItem(position).toString()
+                }
             }
         }
-        /*
+
         binding.createBoton.setOnClickListener {
             val city = City(
                 0,
                 binding.ciudadInput.text.toString(),
-                binding.paisInput.text.toString()
+                //binding.paisInput.text.toString()
+                selectedCountry
             )
             viewModel.createCity(city)
             findNavController().popBackStack()
-        }*/
+        }
     }
 }

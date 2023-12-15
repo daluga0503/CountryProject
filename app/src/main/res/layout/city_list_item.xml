@@ -36,6 +36,20 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="España" />
 
+        <Button
+            android:id="@+id/compartirButton"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|left"
+            android:layout_marginTop="56dp"
+            android:text="Compartir"
+            app:icon="@drawable/share"
+            app:layout_constraintEnd_toEndOf="@+id/county_name"
+            app:layout_constraintHorizontal_bias="0.524"
+            app:layout_constraintStart_toStartOf="@+id/city_name"
+            app:layout_constraintTop_toTopOf="@+id/city_name" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

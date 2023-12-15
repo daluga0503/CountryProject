@@ -2,6 +2,7 @@ package com.example.countriesproject.ui.location
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -9,12 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.countriesproject.data.repository.City
 import com.example.countriesproject.databinding.CityListItemBinding
 
-class LocationListAdapter (private val context: Context): ListAdapter<City, LocationListAdapter.LocationViewHolder>(DiffCallback) {
+class LocationListAdapter (private val context: Context, val onShare:((c:City, v: View)->Unit)): ListAdapter<City, LocationListAdapter.LocationViewHolder>(DiffCallback) {
 
     inner class LocationViewHolder(private val binding: CityListItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bindCity(city: City){
             binding.cityName.text = city.nameCiudad
             binding.countyName.text = city.namePais
+            binding.compartirButton.setOnClickListener{
+                onShare(city, it)
+            }
         }
     }
 
