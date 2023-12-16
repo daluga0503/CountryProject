@@ -24,7 +24,7 @@
         android:layout_height="57dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="76dp"
-        android:hint="Ciudad"
+        android:hint="@string/formularioCiudad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/toolbar"
         app:layout_constraintTop_toTopOf="@id/toolbar">
@@ -66,7 +66,7 @@
         android:layout_width="348dp"
         android:layout_height="55dp"
         android:layout_marginTop="32dp"
-        android:hint="Pais"
+        android:hint="@string/formularioPais"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ciudad_label">
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="228dp"
         android:layout_marginTop="72dp"
-        android:text="Crear"
+        android:text="@string/botonCrear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pais_label"></Button>
 
@@ -101,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="92dp"
         android:layout_marginTop="72dp"
-        android:text="Cancelar"
+        android:text="@string/botonCancelar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pais_label"></Button>
 

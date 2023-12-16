@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CountriesProject</string>
+    <string name="navbarPais">Countries</string>
+    <string name="navbarVisitados">Visited</string>
+    <string name="detailPais">Country: </string>
+    <string name="detailContinente">Continent: </string>
+    <string name="detailPoblacion">Poblation: </string>
+    <string name="visitadoPais">Country</string>
+    <string name="visitadoCiudad">City</string>
+    <string name="botonCompartir">Share</string>
+    <string name="formularioCiudad">City</string>
+    <string name="formularioPais">Country</string>
+    <string name="botonCrear">Create</string>
+    <string name="botonCancelar">Cancel</string>
+</resources>

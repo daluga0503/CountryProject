@@ -15,6 +15,28 @@
         android:orientation="horizontal">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/visitadoPais"
+            app:layout_constraintBottom_toTopOf="@+id/city_name"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/visitadoCiudad"
+            app:layout_constraintBottom_toTopOf="@+id/county_name"
+            app:layout_constraintStart_toStartOf="@+id/county_name">
+
+        </TextView>
+
+        <TextView
             android:id="@+id/city_name"
             style="@style/TextAppearance.Material3.HeadlineLarge"
             android:layout_width="wrap_content"
@@ -43,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|left"
             android:layout_marginTop="56dp"
-            android:text="Compartir"
+            android:text="@string/botonCompartir"
             app:icon="@drawable/share"
             app:layout_constraintEnd_toEndOf="@+id/county_name"
             app:layout_constraintHorizontal_bias="0.524"
