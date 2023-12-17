@@ -15,7 +15,7 @@ class LocationListAdapter (private val context: Context, val onShare:((c:City, v
     inner class LocationViewHolder(private val binding: CityListItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bindCity(city: City){
             binding.cityName.text = city.nameCiudad
-            binding.countyName.text = city.namePais
+            binding.countryName.text = city.namePais
             binding.compartirButton.setOnClickListener{
                 onShare(city, it)
             }

@@ -3,12 +3,13 @@
     <string name="app_name">CountriesProject</string>
     <string name="navbarPais">Paises</string>
     <string name="navbarVisitados">Visitados</string>
-    <string name="detailPais">Pais: </string>
-    <string name="detailContinente">Continente: </string>
-    <string name="detailPoblacion">Poblacion: </string>
+    <string name="detailPais">Pais: %1$s</string>
+    <string name="detailContinente">Continente: %1$s</string>
+    <string name="detailPoblacion">Poblacion: %1$s</string>
     <string name="visitadoPais">Pais</string>
     <string name="visitadoCiudad">Ciudad</string>
     <string name="botonCompartir">Compartir</string>
+    <string name="shareInfo">Información de la ciudad:\nNombre: %1$s\nPaís: %2$s</string>
     <string name="formularioCiudad">Ciudad</string>
     <string name="formularioPais">Pais</string>
     <string name="botonCrear">Crear</string>

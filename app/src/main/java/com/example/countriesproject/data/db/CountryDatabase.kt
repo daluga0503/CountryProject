@@ -13,11 +13,14 @@ abstract class CountryDatabase(): RoomDatabase() {
         @Volatile
         private var INSTANCE: CountryDatabase? = null
 
+        // metodo para obtener una instancia unica de la bbdd
         fun getInstance(context: Context): CountryDatabase{
             return INSTANCE ?: synchronized(this){
                 INSTANCE ?: buildDatabase(context).also { INSTANCE = it}
             }
         }
+
+        // metodo para construir la bbdd. Hay que pasarle el contexto, la clase y el nombre.
         private fun buildDatabase(context: Context):CountryDatabase{
             return Room.databaseBuilder(
                 context.applicationContext,

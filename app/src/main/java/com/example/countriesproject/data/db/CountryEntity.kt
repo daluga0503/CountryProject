@@ -2,6 +2,7 @@ package com.example.countriesproject.data.db
 
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import androidx.room.Relation
 import com.example.countriesproject.data.repository.City
@@ -13,16 +14,16 @@ data class CountryEntity(
     val name:String,
     val flag:String,
     val population:Int,
-    val region:String,
-    val visited:Boolean=false
+    val region:String
 )
 
 @Entity(tableName = "ciudades")
 data class CityEntity(
     @PrimaryKey(autoGenerate = true)
     val listaVisitadosId : Int,
-    val namePais: String,
-    val nameCiudad: String
+    val nameCiudad: String,
+    val namePais: String
+
 
 )
 
@@ -35,23 +36,25 @@ data class CountryCity(
     val visitados : List<CityEntity>
 )
 
+// convierto la lista de CountryEntity a una lista de Country
 fun List<CountryEntity>.asCountry():List<Country>{
     return this.map {
         Country(it.name.replaceFirstChar { c ->c.uppercase() },
             it.flag,
             it.population,
-            it.region,
-            it.visited
+            it.region
             )
     }
 }
+
+// convierto la lista de CountryEntity a una lista de City
 
 fun List<CityEntity>.asCity(): List<City>{
     return this.map {
         City(
             it.listaVisitadosId,
-            it.namePais,
-            it.nameCiudad
+            it.nameCiudad,
+            it.namePais
         )
     }
 }

@@ -39,38 +39,43 @@
                 android:layout_height="125dp"
                 android:layout_gravity="left"></ImageView>
 
+
+
+            <!-- TextView para el valor del continente -->
+
+
             <TextView
                 android:id="@+id/country_name"
-                android:text="@string/detailPais"
-                android:layout_width="133dp"
-                android:layout_height="32dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="30dp"
-                android:layout_toEndOf="@+id/country_img">
+                android:layout_width="104dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/country_img"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="-117dp"
+                android:layout_toEndOf="@+id/country_img"
+                android:text="@string/detailPais" />
 
-            </TextView>
 
             <TextView
                 android:id="@+id/country_region"
-                android:text="@string/detailContinente"
                 android:layout_width="140dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/country_name"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="28dp"
-                android:layout_toEndOf="@+id/country_img" />
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_toEndOf="@+id/country_img"
+                android:text="@string/detailContinente" />
 
             <TextView
                 android:id="@+id/country_population"
-                android:text="@string/detailPoblacion"
-                android:layout_width="152dp"
+                android:layout_width="94dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/country_region"
-                android:layout_alignEnd="@+id/country_img"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="-177dp">
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="-177dp"
+                android:layout_toEndOf="@+id/country_img"
+                android:text="@string/detailPoblacion" />
 
-            </TextView>
 
         </RelativeLayout>
 

@@ -32,12 +32,17 @@ class CountryListFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // dapatador para la lista de paises
         val adapter = CountryListAdapter(requireContext()) { view, country->
+            // Defino la acción de navegación al hacer clic en un país
             val action = CountryListFragmentDirections.actionCountryListFragmentToCountryDetailFragment(country.name)
             view.findNavController().navigate(action)
         }
+        // comunico al recyclerView que ulitice el adaptador para mostrar los elementos de la lista
         val rv = binding.countryList
         rv.adapter = adapter
+
+        // cuandoel estado de la interfaz cambia , cuando carga los paises, el adapter se actualiza mostrando la lista
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.uiState.collect {

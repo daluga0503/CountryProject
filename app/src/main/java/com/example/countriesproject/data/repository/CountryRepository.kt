@@ -19,6 +19,8 @@ class CountryRepository @Inject constructor(
     private val dbRepository: CountryDBRepository,
     private val apiRepository: CountriesApiRepository
 ) {
+
+    //emite la lista de paises desde la bbdd y los mapea a tipo Country
     val country: Flow<List<Country>>
 
         get() {
@@ -28,15 +30,17 @@ class CountryRepository @Inject constructor(
             return list
         }
 
+    // obtengo los detalles de un pais por su nombre desde la bbdd
     suspend fun getName(name:String):CountryEntity{
         return dbRepository.getCountryDetail(name)
     }
 
+    // obtengo el flujo de la lista de todos los paises desde la bbdd
     suspend fun getAllCountries(): Flow<List<Country>> {
         return dbRepository.getAllCountries().map { it.asCountry() }
     }
 
-
+    // actualizar la lista de paises desde la api y se almecena en la bbdd
     suspend fun refreshList(){
         withContext(Dispatchers.IO){
             val apiCountry = apiRepository.getAll()
@@ -48,6 +52,8 @@ class CountryRepository @Inject constructor(
 
     //Ciudades
 
+
+    //emite la lista de ciudades desde la bbdd y los mapea a tipo City
     val city: Flow<List<City>>
         get() {
             val list = dbRepository.allCity.map {
@@ -56,12 +62,14 @@ class CountryRepository @Inject constructor(
             return list
         }
 
+
+    // creo una ciudad en la base de datos. el hilo donde se ejecuta es en la de entrada y salida
     suspend fun createCity(city: City){
         withContext(Dispatchers.IO){
             val city = CityEntity(
                 city.listaVisitadosId,
+                city.nameCiudad,
                 city.namePais,
-                city.nameCiudad
             )
             dbRepository.insertCity(city)
         }

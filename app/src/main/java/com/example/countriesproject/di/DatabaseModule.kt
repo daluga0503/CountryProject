@@ -13,12 +13,15 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
+
+    // suministra un ainstancia unica  dela bbdd
     @Singleton
     @Provides
     fun provideCountryDatabase(@ApplicationContext context: Context):CountryDatabase{
         return CountryDatabase.getInstance(context)
     }
 
+    // suministra una instancia unica al dao (objento de acceso a datos)
     @Singleton
     @Provides
     fun provideCountryDao(database:CountryDatabase):CountryDao{

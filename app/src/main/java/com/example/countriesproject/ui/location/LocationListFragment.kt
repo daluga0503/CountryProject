@@ -36,10 +36,6 @@ class LocationListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*
-        val adapter = LocationListAdapter(requireContext())
-        binding.visit.adapter = adapter
-        */
         val adapter = LocationListAdapter(requireContext()) { city, view ->
             onShareItem(city)
         }
@@ -60,14 +56,14 @@ class LocationListFragment : Fragment() {
 
     }
     private fun onShareItem(city: City) {
-        // Obtén la información relevante de la ciudad
+        // Guardo las info de la ciudad en variables
         val cityName = city.nameCiudad
         val countyName = city.namePais
 
         // Crea el mensaje de texto para compartir
-        val statusText = "Información de la ciudad:\nNombre: $cityName\nPaís: $countyName"
+        val statusText = getString(R.string.shareInfo, cityName, countyName)
 
-        // Crea un intent para compartir
+        // Crea un intent para compartir la información
         val intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, statusText)
@@ -75,6 +71,6 @@ class LocationListFragment : Fragment() {
         }
 
         // Inicia la actividad de compartir
-        startActivity(Intent.createChooser(intent, "Compartir con"))
+        startActivity(Intent.createChooser(intent, ""))
     }
 }

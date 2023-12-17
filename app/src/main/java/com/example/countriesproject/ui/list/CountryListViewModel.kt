@@ -27,8 +27,11 @@ class CountryListViewModel @Inject constructor(private val repository: CountryRe
             }
         }
 
+        // en un hilo secundario recojo la lista y actualizo el estado
         viewModelScope.launch {
+            // recojo la lista
             repository.country.collect {
+                // actualizo el estado con la nueva lista
                 _uiState.value = CountryListUiState(it)
             }
         }

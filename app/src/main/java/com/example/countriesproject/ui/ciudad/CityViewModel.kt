@@ -19,60 +19,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CityViewModel @Inject constructor(private val repository: CountryRepository): ViewModel() {
-    /*
+
+    // MutableStateFlow para representar el estado de la interfaz de usuario de Location
     private val _uiState = MutableStateFlow(LocationUiState(listOf()))
-    val uiState: StateFlow<LocationUiState>
-        get() = _uiState.asStateFlow()
 
-
-
-    private val _allCountries = MutableStateFlow<List<Country>>(emptyList())
-    val allCountries: StateFlow<List<Country>> get() = _allCountries
-
-
-    init {
-        viewModelScope.launch {
-
-            repository.getAllCountries().collect { countries ->
-                _allCountries.value = countries
-            }
-            try {
-                repository.refreshList()
-            } catch (e: IOException) {
-                // Handle exception
-            }
-
-            repository.city.collect {
-                _uiState.value = LocationUiState(it)
-            }
-
-        }
-    }
-
-
-
-
-
-
-    fun createCity(city: City) {
-        viewModelScope.launch {
-            try {
-                repository.createCity(city)
-            }
-            catch (e: IOException) {
-
-            }
-        }
-    }*/
-    private val _uiState = MutableStateFlow(LocationUiState(listOf()))
+    // StateFlow expuesto para que las partes externas observen el estado de la interfaz de usuario
     val uiState: StateFlow<LocationUiState> get() = _uiState.asStateFlow()
 
+
+    // almaceno la lista de paises
     private val _allCountries = MutableStateFlow<List<Country>>(emptyList())
+    // observable para observar la lista de paises
     val allCountries: StateFlow<List<Country>> get() = _allCountries
 
     init {
         viewModelScope.launch {
-            // Fetch the initial list of countries
+            // Obtener la lista inicial de países y actualizar el _allCountries StateFlow
             repository.getAllCountries().collect { countries ->
                 _allCountries.value = countries
             }
@@ -82,13 +44,14 @@ class CityViewModel @Inject constructor(private val repository: CountryRepositor
             } catch (e: IOException) {
                 // Handle exception
             }
-
+            // Observar la colección de ciudades desde el repositorio y actualizar el estado de la interfaz de usuario
             repository.city.collect {
                 _uiState.value = LocationUiState(it)
             }
         }
     }
 
+    // metodo para crear un registro de city
     fun createCity(city: City) {
         viewModelScope.launch {
             try {

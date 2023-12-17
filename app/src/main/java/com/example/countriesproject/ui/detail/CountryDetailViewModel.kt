@@ -16,14 +16,17 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class CountryDetailViewModel @Inject constructor(private val repository: CountryRepository): ViewModel() {
+    // LiveData para representar los detalles del país
     private val _countryDetail = MutableLiveData<CountryEntity>()
     val countryDetail: LiveData<CountryEntity> = _countryDetail
 
 
     fun countryDetail(name: String){
-        Log.d("Daniel", countryDetail.toString())
+        // operciones asincronas
         viewModelScope.launch{
+            // obtengo los detalles del pais
             val detalles = repository.getName(name)
+            // actualizo el LiveData con los detalles obtenidos
             _countryDetail.value = detalles
         }
     }

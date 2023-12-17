@@ -1,10 +1,10 @@
 package com.example.countriesproject.data.api
 
-import com.example.countriesproject.data.db.CityEntity
+
 import com.example.countriesproject.data.db.CountryEntity
-import com.example.countriesproject.data.repository.City
 import com.google.gson.annotations.SerializedName
 
+// modelo para los datos de un pais
 data class CountriesApiModel(
     val common:String,
     val flagUrl:String,
@@ -12,19 +12,11 @@ data class CountriesApiModel(
     val population:Int
 )
 
-
+// modelo para una lista de paises
 data class CountriesListApiModel(
     val list:List<CountriesApiModel>
 )
 
-
-
-data class CountriesResponse(
-    val name :PaisNameResponse,
-    val flags: PaisFlagsResponse,
-    val region:String,
-    val population:Int
-)
 
 data class CountriesDetailResponse(
     val name:PaisNameResponse,
@@ -57,6 +49,7 @@ data class PaisFlagsResponse(
     val png:String
 )
 
+// Convierte la lista de paises a una lista de la entidad pais
 fun List<CountriesListApiModel>.asEntityModel(): List<CountryEntity> {
     return this.flatMap { countriesListApiModel ->
         countriesListApiModel.list.map { countryApiModel ->
@@ -67,16 +60,5 @@ fun List<CountriesListApiModel>.asEntityModel(): List<CountryEntity> {
                 population = countryApiModel.population
             )
         }
-    }
-}
-
-
-fun List<CityEntity>.asCityList(): List<City> {
-    return map { cityEntity ->
-        City(
-            listaVisitadosId = cityEntity.listaVisitadosId,
-            namePais = cityEntity.namePais,
-            nameCiudad = cityEntity.nameCiudad
-        )
     }
 }

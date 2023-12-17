@@ -18,10 +18,9 @@ interface CountryDao {
     @Query("SELECT * FROM country WHERE name = :name")
     suspend fun getCountryDetail(name:String): CountryEntity
 
-
     @Transaction
-    @Query("SELECT * FROM ciudades")
-    fun getCountryWhitVisit(): List<CityEntity>
+    @Query("SELECT * FROM country")
+    fun getCountryWithCities(): List<CountryCity>
 
 
     //Create datos locales
@@ -31,6 +30,8 @@ interface CountryDao {
 
     @Query ("Select * from ciudades")
     fun getAllCity(): Flow<List<CityEntity>>
+
+
 
 
 }

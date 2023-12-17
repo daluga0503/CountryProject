@@ -24,15 +24,16 @@ class CountryDetailFragment : Fragment() {
     private lateinit var binding: FragmentCountryDetailBinding
 
 
-
+    // Observer para observar cambios en los detalles del país en el ViewModel
     val observer = Observer<CountryEntity>{
         binding.toolbar.setNavigationOnClickListener{
             findNavController().popBackStack(R.id.countryListFragment, false)
         }
+        // cargar la imagen de la bandera utilizando coil
         binding.countryImg.load(it.flag)
-        binding.countryName.text = it.name
-        binding.countryPopulation.text = it.population.toString()
-        binding.countryRegion.text = it.region
+        binding.countryName.text = getString(R.string.detailPais, it.name)
+        binding.countryPopulation.text = getString(R.string.detailPoblacion, it.population.toString())
+        binding.countryRegion.text = getString(R.string.detailContinente, it.region)
     }
 
 
@@ -51,8 +52,9 @@ class CountryDetailFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener{
             findNavController().popBackStack()
         }
-        viewModel.countryDetail(args.name)
 
+        // Obtener y observar los detalles del país desde el ViewModel
+        viewModel.countryDetail(args.name)
         viewModel.countryDetail.observe(viewLifecycleOwner,observer)
     }
 
