@@ -15,6 +15,7 @@ import com.example.countriesproject.databinding.FragmentPaisListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class CountryListFragment:Fragment() {
     private lateinit var binding: FragmentPaisListBinding
