@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
-        //val navController = findNavController(R.id.nav_host_fragment_activity_main)
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.countryListFragment,
@@ -36,8 +35,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
         navView.setupWithNavController(navController)
-        // DA UNA EXCEPCION SI NO TENGO UN TOPAPPBAR EN LA ACTIVIDAD!!!!!
-        //setupActionBarWithNavController(navController,appBarConfiguration)
+
 
     }
 }
